@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
+// for github pages: if using custom domain, set to '' or '/'
+// if using github.io subdomain, set to '/your-repo-name'
+// example: if repo is 'username/wwcaps.org', set to '/wwcaps.org'
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 const nextConfig: NextConfig = {
+  output: 'export',
+  basePath: basePath,
   images: {
+    unoptimized: true, // required for static export
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -9,63 +17,9 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   poweredByHeader: false,
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(self), interest-cohort=()',
-          },
-        ],
-      },
-    ];
-  },
-  async redirects() {
-    return [
-      // redirect any potential traffic from old hacked domain patterns
-      {
-        source: '/wp-admin',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/wp-login.php',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/admin',
-        destination: '/',
-        permanent: true,
-      },
-    ];
-  },
+  // note: headers() and redirects() don't work with static export
+  // headers must be configured at the hosting level (github pages doesn't support custom headers)
+  // redirects can be handled via _redirects file or client-side redirects
 };
 
 export default nextConfig;
