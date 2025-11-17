@@ -1,0 +1,93 @@
+@use '../styles/variables.scss' as *;
+@use '../styles/mixins.scss' as *;
+@use '../styles/typography.scss' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--color-base);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+}
+
+// Skip to main content link (accessibility)
+.skipToMain {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: $spacing-sm $spacing-md;
+  text-decoration: none;
+  z-index: 1000;
+  font-weight: 600;
+  border-radius: 0 0 4px 0;
+
+  &:focus {
+    top: 0;
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  &:visited {
+    color: var(--color-text-light);
+  }
+}
+
+// Enhanced focus indicators for all interactive elements
+button,
+input,
+textarea,
+select {
+  &:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+

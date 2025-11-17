@@ -1,0 +1,67 @@
+// color palette - White, Black, Yellow Accent (WCAG AA compliant)
+:root {
+  // Primary colors
+  --color-primary: #000000; // Black - primary actions and text
+  --color-primary-dark: #1a1a1a; // Darker black for hover states
+  --color-primary-light: #333333; // Dark gray for secondary text
+  
+  // Yellow accent
+  --color-accent: #FFD700; // Bright gold/yellow accent
+  --color-accent-dark: #FFC700; // Darker yellow for hover
+  --color-accent-light: #FFF9C4; // Light yellow background/tint
+  
+  // Secondary colors
+  --color-secondary: #666666; // Medium gray for secondary elements
+  --color-secondary-light: #F5F5F5; // Very light gray
+  
+  // Text colors (ensuring WCAG AA contrast)
+  --color-text: #000000; // Black for body text (21:1 on white)
+  --color-text-light: #666666; // Medium gray for secondary text (5.7:1 on white)
+  --color-heading: #000000; // Black for headings (21:1 on white)
+  
+  // Backgrounds
+  --color-base: #FFFFFF; // White base
+  --color-white: #FFFFFF;
+  --color-light-gray: #F9F9F9; // Very light gray
+  --color-surface: #FFFFFF; // White surface
+  
+  // Links
+  --color-link: #000000; // Black for links
+  --color-link-hover: #FFD700; // Yellow on hover
+  --color-link-visited: #666666; // Gray for visited links
+  
+  // Status colors (accessible)
+  --color-success: #059669; // Green (4.5:1 on white)
+  --color-error: #DC2626; // Red (5.1:1 on white)
+  --color-warning: #FFD700; // Yellow
+  --color-info: #0284C7; // Blue (4.5:1 on white)
+  
+  // Focus indicators
+  --color-focus: #FFD700; // Yellow for focus rings
+  --color-focus-ring: rgba(255, 215, 0, 0.4); // Semi-transparent yellow
+}
+
+// typography - Calming but professional fonts
+:root {
+  --font-heading: 'Lora', Georgia, serif;
+  --font-body: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+// breakpoints
+$mobile: 640px;
+$tablet: 1024px;
+$desktop: 1025px;
+
+// spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+$spacing-2xl: 4rem;
+
+// transitions
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+

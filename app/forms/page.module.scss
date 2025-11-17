@@ -1,0 +1,125 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.page {
+  min-height: 100vh;
+}
+
+.hero {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: $spacing-xl 0;
+  text-align: center;
+
+  h1 {
+    color: var(--color-white);
+    margin: 0;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.content {
+  @include section-padding;
+  background-color: var(--color-white);
+}
+
+.intro {
+  margin-bottom: $spacing-xl;
+  font-size: 1.125rem;
+  line-height: 1.8;
+
+  a {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+}
+
+.formSection {
+  margin-bottom: $spacing-2xl;
+}
+
+.form {
+  max-width: 600px;
+  margin-top: $spacing-lg;
+}
+
+.formGroup {
+  margin-bottom: $spacing-lg;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: $spacing-sm;
+    border: 2px solid var(--color-accent);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color $transition-base;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+}
+
+.submitButton {
+  @include button-primary;
+  padding: $spacing-md $spacing-xl;
+  font-size: 1.125rem;
+  min-width: 200px;
+}
+
+.successMessage {
+  background-color: #d4edda;
+  color: #155724;
+  padding: $spacing-md;
+  border-radius: 4px;
+  margin-top: $spacing-lg;
+  text-align: center;
+}
+
+.downloadSection {
+  h2 {
+    color: var(--color-primary);
+    margin-bottom: $spacing-md;
+  }
+
+  p {
+    margin-bottom: $spacing-md;
+    line-height: 1.8;
+  }
+}
+
+.formLinks {
+  margin-top: $spacing-lg;
+}
+
+.note {
+  padding: $spacing-md;
+  background-color: var(--color-light-gray);
+  border-left: 4px solid var(--color-primary);
+  font-style: italic;
+
+  a {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+}
+

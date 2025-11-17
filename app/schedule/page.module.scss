@@ -1,0 +1,149 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.page {
+  min-height: 100vh;
+}
+
+.hero {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: $spacing-xl 0;
+  text-align: center;
+
+  h1 {
+    color: var(--color-white);
+    margin: 0;
+  }
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  margin-top: $spacing-md;
+  opacity: 0.9;
+}
+
+.container {
+  @include container;
+}
+
+.content {
+  @include section-padding;
+  background-color: var(--color-white);
+}
+
+.contactSection {
+  text-align: center;
+  margin-bottom: $spacing-2xl;
+  padding: $spacing-xl;
+  background-color: var(--color-light-gray);
+  border-radius: 8px;
+
+  h2 {
+    color: var(--color-primary);
+    margin-bottom: $spacing-md;
+  }
+
+  p {
+    margin-bottom: $spacing-md;
+  }
+}
+
+.phoneButton {
+  @include button-primary;
+  display: inline-block;
+  padding: $spacing-md $spacing-xl;
+  font-size: 1.25rem;
+  margin: $spacing-md 0;
+  text-decoration: none;
+}
+
+.note {
+  margin-top: $spacing-md;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.formSection {
+  max-width: 700px;
+  margin: 0 auto;
+
+  h2 {
+    color: var(--color-primary);
+    margin-bottom: $spacing-md;
+  }
+
+  p {
+    margin-bottom: $spacing-lg;
+    line-height: 1.8;
+  }
+}
+
+.form {
+  margin-top: $spacing-lg;
+}
+
+.formGroup {
+  margin-bottom: $spacing-lg;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: $spacing-sm;
+    border: 2px solid var(--color-accent);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color $transition-base;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+
+  @include tablet-up {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.submitButton {
+  @include button-primary;
+  padding: $spacing-md $spacing-xl;
+  font-size: 1.125rem;
+  min-width: 200px;
+  width: 100%;
+
+  @include tablet-up {
+    width: auto;
+  }
+}
+
+.successMessage {
+  background-color: #d4edda;
+  color: #155724;
+  padding: $spacing-md;
+  border-radius: 4px;
+  margin-top: $spacing-lg;
+  text-align: center;
+}
+

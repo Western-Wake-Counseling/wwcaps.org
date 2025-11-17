@@ -1,0 +1,169 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.page {
+  min-height: 100vh;
+}
+
+.hero {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: $spacing-lg 0;
+  text-align: center;
+
+  @include tablet-up {
+    padding: $spacing-xl 0;
+  }
+
+  h1 {
+    color: var(--color-white);
+    margin: 0;
+    font-size: 1.75rem;
+
+    @include tablet-up {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.container {
+  @include container;
+}
+
+.content {
+  padding: $spacing-lg 0;
+
+  @include tablet-up {
+    @include section-padding;
+  }
+  background-color: var(--color-white);
+}
+
+.section {
+  margin-bottom: $spacing-lg;
+
+  @include tablet-up {
+    margin-bottom: $spacing-xl;
+  }
+
+  h2 {
+    color: var(--color-primary);
+    margin-bottom: $spacing-md;
+    font-size: 1.5rem;
+
+    @include tablet-up {
+      font-size: 1.75rem;
+    }
+  }
+
+  p {
+    margin-bottom: $spacing-md;
+    line-height: 1.7;
+    font-size: 0.9375rem;
+
+    @include tablet-up {
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+  }
+
+  ul {
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: $spacing-md;
+    padding-left: $spacing-md;
+    line-height: 1.8;
+    font-size: 0.9375rem;
+    list-style-type: disc;
+    list-style-position: outside;
+
+    @include tablet-up {
+      margin-left: $spacing-lg;
+      padding-left: 0;
+      font-size: 1rem;
+    }
+
+    li {
+      margin-bottom: $spacing-xs;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  a {
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 1rem;
+  }
+}
+
+.accordion {
+  margin-top: $spacing-lg;
+}
+
+.accordionItem {
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.accordionTrigger {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  text-align: left;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color $transition-base;
+  min-height: 48px;
+
+  @include tablet-up {
+    font-size: 1rem;
+    padding: $spacing-md;
+  }
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  &[data-state='open'] {
+    color: var(--color-primary);
+  }
+
+  &::after {
+    content: '+';
+    font-size: 1.5rem;
+    transition: transform $transition-base;
+    flex-shrink: 0;
+    margin-left: $spacing-sm;
+  }
+
+  &[data-state='open']::after {
+    content: '−';
+  }
+}
+
+.accordionContent {
+  padding: 0 $spacing-md $spacing-md;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+
+  p {
+    margin: 0;
+    line-height: 1.7;
+    font-size: 0.9375rem;
+
+    @include tablet-up {
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+  }
+}
+

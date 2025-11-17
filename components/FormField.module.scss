@@ -1,0 +1,131 @@
+@use '../styles/variables.scss' as *;
+@use '../styles/mixins.scss' as *;
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  margin-bottom: 0;
+
+  input,
+  textarea {
+    padding: $spacing-sm $spacing-md;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-white);
+    transition: all $transition-base;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    min-height: 48px;
+
+    @include tablet-up {
+      padding: $spacing-md $spacing-md;
+      font-size: 1rem;
+    }
+
+    &::placeholder {
+      color: #9ca3af;
+      opacity: 1;
+      font-weight: 400;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px var(--color-focus-ring);
+      background-color: var(--color-white);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 4px var(--color-focus-ring);
+    }
+
+    &:hover:not(:focus):not(:disabled) {
+      border-color: #9ca3af;
+    }
+
+    &.inputError,
+    &:invalid:not(:placeholder-shown) {
+      border-color: var(--color-error);
+      background-color: #fef2f2;
+
+      &:focus {
+        border-color: var(--color-error);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+      }
+
+      &:focus-visible {
+        outline: 3px solid var(--color-error);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15);
+      }
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      background-color: var(--color-light-gray);
+      border-color: #e5e7eb;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: var(--font-body);
+    line-height: 1.6;
+    padding-top: $spacing-md;
+    padding-bottom: $spacing-md;
+
+    @include tablet-up {
+      min-height: 120px;
+      padding-top: $spacing-md;
+      padding-bottom: $spacing-md;
+    }
+  }
+}
+
+.label {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  display: block;
+  margin-bottom: $spacing-xs;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+
+  @include tablet-up {
+    font-size: 1rem;
+  }
+}
+
+.required {
+  color: var(--color-error);
+  margin-left: 2px;
+  font-weight: 600;
+}
+
+.error {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: $spacing-xs;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-weight: 500;
+
+  &::before {
+    content: '⚠';
+    font-size: 0.875rem;
+  }
+}
+

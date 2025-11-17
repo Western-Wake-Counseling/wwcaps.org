@@ -1,0 +1,215 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.page {
+  min-height: 100vh;
+}
+
+.hero {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: $spacing-lg 0;
+  text-align: center;
+
+  @include tablet-up {
+    padding: $spacing-xl 0;
+  }
+
+  h1 {
+    color: var(--color-white);
+    margin: 0;
+    font-size: 1.75rem;
+
+    @include tablet-up {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.container {
+  @include container;
+}
+
+.content {
+  padding: $spacing-lg 0;
+
+  @include tablet-up {
+    @include section-padding;
+  }
+  background-color: var(--color-white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+
+  @include tablet-up {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mapSection {
+  h2 {
+    color: var(--color-primary);
+    margin-bottom: $spacing-md;
+    font-size: 1.5rem;
+
+    @include tablet-up {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+.mapContainer {
+  width: 100%;
+  margin-bottom: $spacing-md;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 300px;
+
+    @include tablet-up {
+      height: 400px;
+    }
+  }
+}
+
+.mapLink {
+  text-align: center;
+
+  a {
+    color: var(--color-primary);
+    font-weight: 500;
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--color-link-hover);
+    }
+  }
+}
+
+.infoSection {
+  h2 {
+    color: var(--color-primary);
+    margin-bottom: $spacing-lg;
+    font-size: 1.5rem;
+
+    @include tablet-up {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+.addressBlock,
+.contactBlock {
+  margin-bottom: $spacing-lg;
+
+  @include tablet-up {
+    margin-bottom: $spacing-xl;
+  }
+
+  h3 {
+    color: var(--color-primary);
+    font-size: 1.125rem;
+    margin-bottom: $spacing-sm;
+    font-weight: 600;
+  }
+}
+
+.socialBlock {
+  margin-bottom: 0;
+
+  @include tablet-up {
+    margin-bottom: $spacing-xl;
+  }
+
+  h3 {
+    color: var(--color-primary);
+    font-size: 1.125rem;
+    margin-bottom: $spacing-md;
+    font-weight: 600;
+  }
+}
+
+.addressBlock,
+.contactBlock {
+  address {
+    font-style: normal;
+    line-height: 1.8;
+    font-size: 0.9375rem;
+
+    @include tablet-up {
+      font-size: 1rem;
+    }
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.8;
+    font-size: 0.9375rem;
+
+    @include tablet-up {
+      font-size: 1rem;
+    }
+  }
+
+  a:not(.socialLink) {
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 1rem;
+    display: inline-block;
+    padding: 2px 0;
+
+    &:hover {
+      color: var(--color-link-hover);
+    }
+  }
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  align-items: center;
+  margin-bottom: 0;
+
+  @include tablet-up {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+}
+
+.socialLinks .socialLink:last-child {
+  margin-bottom: 0;
+}
+
+.socialLink {
+  @include button-primary;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-lg !important;
+  font-size: 1rem;
+  width: 100%;
+  text-align: center;
+  min-height: 48px;
+
+  @include tablet-up {
+    padding: $spacing-md $spacing-xl !important;
+    font-size: 1.125rem;
+    width: auto;
+    min-width: 200px;
+  }
+
+  &:hover {
+    color: var(--color-primary) !important;
+  }
+}
+

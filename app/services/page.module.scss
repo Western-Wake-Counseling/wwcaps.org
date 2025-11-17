@@ -1,0 +1,417 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.page {
+  min-height: 100vh;
+}
+
+.hero {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: $spacing-xl 0;
+  text-align: center;
+
+  h1 {
+    color: var(--color-white);
+    margin: 0;
+  }
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  margin-top: $spacing-md;
+  opacity: 0.9;
+}
+
+.container {
+  @include container;
+}
+
+.content {
+  @include section-padding;
+  background-color: var(--color-white);
+}
+
+.serviceTypes {
+  @include section-padding;
+  background-color: var(--color-light-gray);
+  width: 100%;
+
+  h2 {
+    color: var(--color-primary);
+    font-size: 1.75rem;
+    margin-bottom: $spacing-md;
+    text-align: center;
+
+    @include tablet-up {
+      font-size: 2rem;
+    }
+  }
+}
+
+.sectionIntro {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: $spacing-lg;
+  color: var(--color-text);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include tablet-up {
+    font-size: 1.0625rem;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.serviceTypesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.serviceTypeCard {
+  background-color: var(--color-white);
+  padding: $spacing-lg;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform $transition-base, box-shadow $transition-base;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.serviceIcon {
+  font-size: 3rem;
+  margin-bottom: $spacing-md;
+  text-align: center;
+}
+
+.serviceTypeCard h3 {
+  color: var(--color-text);
+  margin-bottom: $spacing-sm;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: color $transition-base;
+
+  @include mobile {
+    font-size: 1.125rem;
+  }
+}
+
+.serviceTypeCard p {
+  flex: 1;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: $spacing-md;
+  font-size: 0.9375rem;
+
+  @include mobile {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+}
+
+.serviceTypeCard:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: rgba(255, 215, 0, 0.3);
+
+  &::before {
+    transform: scaleX(1);
+  }
+
+  h3 {
+    color: var(--color-accent);
+  }
+}
+
+.serviceTypeCard:active {
+  transform: translateY(-2px) scale(1);
+}
+
+.learnMoreLink {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: auto;
+  transition: all $transition-base;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width $transition-base;
+  }
+
+  &:hover {
+    color: var(--color-accent-dark);
+    
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.content {
+  @include section-padding;
+  background-color: var(--color-white);
+  width: 100%;
+
+  h2 {
+    color: var(--color-primary);
+    font-size: 1.75rem;
+    margin-bottom: $spacing-md;
+    text-align: center;
+
+    @include tablet-up {
+      font-size: 2rem;
+    }
+  }
+}
+
+.servicesGridWrapper {
+  margin-top: $spacing-lg;
+  width: 100%;
+  position: relative;
+
+  @include mobile {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-left: -$spacing-sm;
+    margin-right: -$spacing-sm;
+    padding-left: $spacing-sm;
+    padding-right: $spacing-sm;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent-light) transparent;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-accent-light);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--color-accent);
+    }
+  }
+
+  @include tablet-up {
+    overflow-x: visible;
+  }
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-md;
+  width: 100%;
+
+  @include mobile {
+    display: flex;
+    flex-direction: row;
+    gap: $spacing-md;
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    padding-bottom: $spacing-sm;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    width: 100%;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+}
+
+.serviceCard {
+  background: linear-gradient(135deg, #FFFEF5 0%, #FFFBF0 100%);
+  padding: $spacing-lg;
+  border-radius: 12px;
+  border-left: 4px solid var(--color-accent);
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+  border-right: 1px solid rgba(255, 215, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  transition: all $transition-base;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+
+  @include mobile {
+    padding: $spacing-lg;
+    border-radius: 12px;
+    min-width: 280px;
+    max-width: 320px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    width: 85vw;
+  }
+
+  &:hover {
+    transform: translateY(-4px) translateX(4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-left-width: 6px;
+    border-color: var(--color-accent);
+
+    &::after {
+      transform: scaleY(1);
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px) translateX(2px);
+  }
+
+  h3 {
+    color: var(--color-text);
+    margin-bottom: $spacing-sm;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: color $transition-base;
+
+    @include mobile {
+      font-size: 1.125rem;
+    }
+  }
+
+  &:hover h3 {
+    color: var(--color-accent);
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.7;
+    color: var(--color-text);
+    font-size: 0.9375rem;
+
+    @include mobile {
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+.ctaSection {
+  @include section-padding;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  width: 100%;
+}
+
+.ctaContent {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+
+  h2 {
+    color: var(--color-white);
+    font-size: 1.75rem;
+    margin-bottom: $spacing-md;
+
+    @include tablet-up {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: $spacing-lg;
+    color: rgba(255, 255, 255, 0.95);
+
+    @include tablet-up {
+      font-size: 1.0625rem;
+    }
+  }
+}
+
+.ctaButtons {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet-up {
+    flex-direction: row;
+  }
+}
+
+.primaryButton {
+  @include button-primary;
+  text-decoration: none;
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  min-width: 200px;
+}
+
+.secondaryButton {
+  @include button-secondary;
+  text-decoration: none;
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  min-width: 200px;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-white);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--color-primary);
+  }
+}
+
