@@ -25,10 +25,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Set basePath
         id: basepath
@@ -44,7 +44,7 @@ jobs:
           # set basePath to repo name for github.io subdomain
           # if using custom domain, set NEXT_PUBLIC_BASE_PATH to '' in repository secrets
           NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.basepath }}
-        run: npm run build
+        run: yarn build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
