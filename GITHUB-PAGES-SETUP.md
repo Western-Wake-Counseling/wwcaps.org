@@ -18,7 +18,8 @@ The `basePath` setting depends on how you're hosting:
 #### Option A: Using GitHub Pages Subdomain (username.github.io/repo-name)
 - The workflow automatically sets the basePath to your repository name
 - No additional configuration needed
-- Your site will be available at: `https://your-username.github.io/wwcaps.org/`
+- Your site will be available at: `https://western-wake-counseling.github.io/wwcaps.org/`
+- The basePath is automatically set to `/wwcaps.org` during build
 
 #### Option B: Using Custom Domain (wwcaps.org)
 1. Go to your repository on GitHub

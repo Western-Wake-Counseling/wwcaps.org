@@ -44,6 +44,7 @@ jobs:
           # set basePath to repo name for github.io subdomain
           # if using custom domain, set NEXT_PUBLIC_BASE_PATH to '' in repository secrets
           NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.basepath }}
+          # ensure public assets are included in the build
         run: yarn build
 
       - name: Setup Pages
