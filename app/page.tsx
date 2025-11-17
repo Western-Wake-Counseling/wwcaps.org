@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -74,6 +74,14 @@ const therapyIndications = [
 
 export default function Home() {
   const [toastOpen, setToastOpen] = useState(false);
+  const [supportsHover, setSupportsHover] = useState(false);
+
+  useEffect(() => {
+    // check if device supports hover (not touch devices)
+    if (window.matchMedia('(hover: hover)').matches) {
+      setSupportsHover(true);
+    }
+  }, []);
 
   const {
     register,
@@ -239,12 +247,13 @@ export default function Home() {
                     stiffness: 100,
                     damping: 12
                   }}
-                  whileHover={{ 
+                  // disable hover/tap effects on mobile (touch devices)
+                  whileHover={supportsHover ? { 
                     x: 4,
                     y: -4,
                     transition: { duration: 0.2 }
-                  }}
-                  whileTap={{ scale: 0.98 }}
+                  } : undefined}
+                  whileTap={supportsHover ? { scale: 0.98 } : undefined}
                 >
                   <h3>{indication.title}</h3>
                   <p>{indication.description}</p>
@@ -279,12 +288,13 @@ export default function Home() {
                     stiffness: 100,
                     damping: 12
                   }}
-                  whileHover={{ 
+                  // disable hover/tap effects on mobile (touch devices)
+                  whileHover={supportsHover ? { 
                     y: -6,
                     scale: 1.02,
                     transition: { duration: 0.2 }
-                  }}
-                  whileTap={{ scale: 0.98 }}
+                  } : undefined}
+                  whileTap={supportsHover ? { scale: 0.98 } : undefined}
                 >
                   {service}
                 </motion.div>

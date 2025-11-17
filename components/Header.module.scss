@@ -159,7 +159,7 @@
   width: 48px;
   height: 48px;
   border-radius: 6px;
-  transition: all $transition-base;
+  // transitions removed for mobile menu button
   flex-shrink: 0;
   position: relative;
   color: var(--color-text);
@@ -174,9 +174,21 @@
     display: none;
   }
 
-  &:hover {
-    background-color: var(--color-light-gray);
-    border-color: var(--color-primary);
+  // disable hover/active effects on mobile (touch devices)
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-light-gray);
+      border-color: var(--color-primary);
+    }
+
+    &:active {
+      background-color: rgba(74, 112, 139, 0.1);
+      transform: scale(0.95);
+    }
+
+    &[aria-expanded='true']:hover {
+      background-color: var(--color-primary-dark);
+    }
   }
 
   &:focus-visible {
@@ -186,19 +198,10 @@
     box-shadow: 0 0 0 4px var(--color-focus-ring);
   }
 
-  &:active {
-    background-color: rgba(74, 112, 139, 0.1);
-    transform: scale(0.95);
-  }
-
   &[aria-expanded='true'] {
     background-color: var(--color-primary);
     color: var(--color-white);
     border-color: var(--color-primary);
-
-    &:hover {
-      background-color: var(--color-primary-dark);
-    }
 
     &:focus-visible {
       outline: 3px solid var(--color-white);
@@ -216,7 +219,7 @@
 }
 
 .icon {
-  transition: transform $transition-base, opacity $transition-base;
+  // icon transitions removed for mobile menu
   stroke-width: 2;
 }
 
@@ -238,15 +241,7 @@
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 1001;
   backdrop-filter: blur(2px);
-  animation: fadeIn 0.2s ease-out;
-
-  &[data-state='open'] {
-    animation: fadeIn 0.2s ease-out;
-  }
-
-  &[data-state='closed'] {
-    animation: fadeOut 0.15s ease-in;
-  }
+  // animations removed for mobile menu
 }
 
 @keyframes fadeIn {
@@ -278,18 +273,10 @@
   padding: 0;
   z-index: 1002;
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.2);
-  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-
-  &[data-state='open'] {
-    animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  &[data-state='closed'] {
-    animation: slideOut 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+  // animations removed for mobile menu
 
   @include mobile {
     width: 90%;
@@ -402,13 +389,20 @@
     transition: transform $transition-base;
   }
 
-  &:hover {
-    color: var(--color-accent);
-    background-color: var(--color-accent-light);
-    padding-left: calc(#{$spacing-md} + 8px);
+  // disable hover/active effects on mobile (touch devices)
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-accent);
+      background-color: var(--color-accent-light);
+      padding-left: calc(#{$spacing-md} + 8px);
 
-    &::before {
-      transform: scaleY(1);
+      &::before {
+        transform: scaleY(1);
+      }
+    }
+
+    &:active {
+      background-color: var(--color-secondary-light);
     }
   }
 
@@ -422,10 +416,6 @@
     &::before {
       transform: scaleY(1);
     }
-  }
-
-  &:active {
-    background-color: var(--color-secondary-light);
   }
 }
 
@@ -454,10 +444,18 @@
     right: $spacing-xs;
   }
 
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: rotate(90deg);
+  // disable hover/active effects on mobile (touch devices)
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: rotate(90deg);
+    }
+
+    &:active {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: rotate(90deg) scale(0.95);
+    }
   }
 
   &:focus-visible {
@@ -466,11 +464,6 @@
     border-color: var(--color-white);
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
-  }
-
-  &:active {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: rotate(90deg) scale(0.95);
   }
 }
 

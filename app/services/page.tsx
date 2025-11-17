@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -35,7 +36,7 @@ const serviceTypes = [
     description:
       'Convenient online counseling sessions via SecureVideo. Access quality mental health care from the comfort of your home. Research shows telehealth is as effective as in-person therapy.',
     icon: '💻',
-    link: '/telehealth',
+    link: '/schedule',
   },
 ];
 
@@ -118,6 +119,15 @@ const services = [
 ];
 
 export default function ServicesPage() {
+  const [supportsHover, setSupportsHover] = useState(false);
+
+  useEffect(() => {
+    // check if device supports hover (not touch devices)
+    if (window.matchMedia('(hover: hover)').matches) {
+      setSupportsHover(true);
+    }
+  }, []);
+
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
@@ -153,12 +163,13 @@ export default function ServicesPage() {
                     stiffness: 100,
                     damping: 12
                   }}
-                  whileHover={{ 
+                  // disable hover/tap effects on mobile (touch devices)
+                  whileHover={supportsHover ? { 
                     y: -6,
                     scale: 1.02,
                     transition: { duration: 0.2 }
-                  }}
-                  whileTap={{ scale: 0.98 }}
+                  } : undefined}
+                  whileTap={supportsHover ? { scale: 0.98 } : undefined}
                 >
                   <div className={styles.serviceIcon}>{type.icon}</div>
                   <h3>{type.name}</h3>
@@ -206,12 +217,13 @@ export default function ServicesPage() {
                     stiffness: 100,
                     damping: 12
                   }}
-                  whileHover={{ 
+                  // disable hover/tap effects on mobile (touch devices)
+                  whileHover={supportsHover ? { 
                     y: -6,
                     scale: 1.02,
                     transition: { duration: 0.2 }
-                  }}
-                  whileTap={{ scale: 0.98 }}
+                  } : undefined}
+                  whileTap={supportsHover ? { scale: 0.98 } : undefined}
                 >
                   <h3>{service.name}</h3>
                   <p>{service.description}</p>
