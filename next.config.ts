@@ -11,20 +11,14 @@ const nextConfig: NextConfig = {
   output: 'export',
   
   // next.js 16: basePath for github pages subdirectory
+  // this automatically handles all asset paths including images and fonts
   basePath: basePath,
-  
-  // next.js 16: assetPrefix matches basePath for static assets (images, fonts, etc.)
-  // only set if basePath is not empty to ensure proper asset loading
-  ...(basePath && { assetPrefix: basePath }),
   
   // next.js 16: image optimization disabled for static export
   images: {
     unoptimized: true, // required for static export in next.js 16
-    // formats and sizes are ignored when unoptimized: true, but kept for reference
-    formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
+    // basePath is automatically handled by Next.js Image component
+    // but we need to ensure NEXT_PUBLIC_BASE_PATH is available at build time
   },
   
   compress: true,

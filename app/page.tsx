@@ -305,7 +305,7 @@ export default function Home() {
           >
             <div className={styles.meetDoctorImage}>
               <Image
-                src="/images/dr-tammie.jpg"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/dr-tammie.jpg`}
                 alt="Dr. Tammie Ducre' Moore"
                 width={300}
                 height={400}
@@ -351,7 +351,7 @@ export default function Home() {
           >
             <div className={styles.communityImage}>
               <Image
-                src="/images/dr-tammie-and-deborah-ross.JPG"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/dr-tammie-and-deborah-ross.JPG`}
                 alt="Dr. Tammie Moore with Congresswoman Deborah Ross"
                 width={640}
                 height={720}

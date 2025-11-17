@@ -27,7 +27,7 @@ export default function AboutPage() {
           <div className={styles.profileSection}>
             <div className={styles.profileImage}>
               <Image
-                src="/images/dr-tammie.jpg"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/dr-tammie.jpg`}
                 alt="Dr. Tammie Ducre' Moore"
                 width={300}
                 height={400}
