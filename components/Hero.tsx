@@ -4,9 +4,16 @@ import Link from 'next/link';
 import styles from './Hero.module.scss';
 
 export default function Hero() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const backgroundImageUrl = `${basePath}/images/sunflower.jpg`;
+  
   return (
     <section className={styles.hero}>
-      <div className={styles.backgroundImage} aria-hidden="true" />
+      <div 
+        className={styles.backgroundImage} 
+        aria-hidden="true"
+        style={{ backgroundImage: `url('${backgroundImageUrl}')` }}
+      />
       <div className={styles.content}>
         <div className={styles.textContent}>
           <h1 className={styles.heading}>

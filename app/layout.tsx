@@ -103,11 +103,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico', sizes: 'any' },
+      { url: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/favicon.svg`, type: 'image/svg+xml' },
+      { url: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/favicon.ico`, sizes: 'any' },
     ],
   },
-  manifest: '/manifest.json',
+  manifest: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/manifest.json`,
 };
 
 export default function RootLayout({
