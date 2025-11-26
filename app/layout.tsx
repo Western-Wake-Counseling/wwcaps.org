@@ -70,10 +70,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/sunflower.jpg",
         width: 1200,
         height: 630,
-        alt: "Western Wake Counseling - Dr. Tammie Moore, Licensed Psychologist",
+        alt: "Sunflower field representing hope and growth at Western Wake Counseling",
       },
     ],
   },
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     title: "Western Wake Counseling | Dr. Tammie Moore, Licensed Psychologist",
     description: "Compassionate, holistic counseling services in Cary & Apex, NC",
     creator: "@drtammie45",
-    images: ["/images/og-image.jpg"],
+    images: ["/images/sunflower.jpg"],
   },
   robots: {
     index: true,
