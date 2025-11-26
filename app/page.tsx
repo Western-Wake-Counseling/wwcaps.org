@@ -150,7 +150,7 @@ export default function Home() {
             <div className={styles.quickContactText}>
               <h2>Get Started Today</h2>
               <p>
-                Have questions or ready to schedule an appointment? Call us directly to speak with our team.
+                Have questions or ready to schedule an appointment? call us directly to speak with our team and we will be happy to help.
               </p>
               <div className={styles.phoneCallout}>
                 <a href="tel:9194673831" className={styles.phoneButton}>
