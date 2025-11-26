@@ -232,7 +232,7 @@ export default function Home() {
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
-                <p className={styles.phoneNote}>
+                <p className={styles.formNotice}>
                   information submitted through this form is sent via encrypted email and handled in line with applicable privacy laws; do not use this form for emergencies.
                 </p>
               </form>

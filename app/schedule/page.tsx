@@ -184,7 +184,7 @@ export default function SchedulePage() {
                 <button type="submit" className={styles.submitButton}>
                   Request Appointment
                 </button>
-                <p className={styles.note}>
+                <p className={styles.formNotice}>
                   information submitted through this form is sent via encrypted email and handled in line with applicable privacy laws; do not use this form for emergencies.
                 </p>
               </form>
