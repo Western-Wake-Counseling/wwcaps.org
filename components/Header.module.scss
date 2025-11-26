@@ -12,24 +12,23 @@
 }
 
 .container {
+  @include container;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: $spacing-xs $spacing-sm;
   gap: $spacing-sm;
   min-height: 60px;
-  max-width: 100%;
-  width: 100%;
 
   @include tablet-up {
-    padding: $spacing-sm $spacing-md;
+    padding: $spacing-sm 0;
     gap: $spacing-lg;
     min-height: 70px;
     justify-content: flex-start;
   }
 
   @include desktop {
-    padding: $spacing-md $spacing-lg;
+    padding: $spacing-md 0;
   }
 }
 
@@ -73,7 +72,7 @@
   display: none;
   justify-content: flex-start;
   align-items: center;
-  margin-left: $spacing-xl;
+  margin-left: auto;
 
   @include tablet-up {
     display: flex;
