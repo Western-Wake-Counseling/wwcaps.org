@@ -93,14 +93,33 @@ export default function Home() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
+    const to = ['support@wwcaps.org', 'drtammiemoore@wwcaps.org'].join(',');
+
+    const subject = `New website contact request from ${data.name}`;
+    const bodyLines = [
+      'a new contact request was submitted from the homepage quick contact form.',
+      '',
+      `name: ${data.name}`,
+      `email: ${data.email}`,
+      `phone: ${data.phone}`,
+      '',
+      `message: ${data.message || '(no message provided)'}`,
+    ];
+
+    const params = new URLSearchParams({
+      subject,
+      body: bodyLines.join('\n'),
+    });
+
+    const mailtoHref = `mailto:${to}?${params.toString()}`;
+
     try {
-      // form submission logic would go here
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      window.location.href = mailtoHref;
       setToastOpen(true);
       reset();
       setTimeout(() => setToastOpen(false), 5000);
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error('form submission error:', error);
     }
   };
 

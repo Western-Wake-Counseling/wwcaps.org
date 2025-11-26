@@ -16,18 +16,45 @@ export default function FormsPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // form submission logic would go here
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        preferredContact: '',
-        message: '',
-      });
-    }, 3000);
+
+    const to = ['support@wwcaps.org', 'drtammiemoore@wwcaps.org'].join(',');
+
+    const subject = `New online referral form submission from ${formData.name || 'website visitor'}`;
+    const bodyLines = [
+      'a new online referral form was submitted from the new client forms page.',
+      '',
+      `name: ${formData.name || '(not provided)'}`,
+      `email: ${formData.email || '(not provided)'}`,
+      `phone: ${formData.phone || '(not provided)'}`,
+      `preferred contact: ${formData.preferredContact || '(not specified)'}`,
+      '',
+      'message / reason for referral:',
+      formData.message || '(no message provided)',
+    ];
+
+    const params = new URLSearchParams({
+      subject,
+      body: bodyLines.join('\n'),
+    });
+
+    const mailtoHref = `mailto:${to}?${params.toString()}`;
+
+    try {
+      window.location.href = mailtoHref;
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          preferredContact: '',
+          message: '',
+        });
+      }, 3000);
+    } catch (error) {
+      console.error('forms page submission error:', error);
+    }
   };
 
   const handleChange = (

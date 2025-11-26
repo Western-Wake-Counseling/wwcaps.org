@@ -17,19 +17,47 @@ export default function SchedulePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // form submission logic would go here
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        preferredDate: '',
-        preferredTime: '',
-        message: '',
-      });
-    }, 3000);
+
+    const to = ['support@wwcaps.org', 'drtammiemoore@wwcaps.org'].join(',');
+
+    const subject = `New appointment request from ${formData.name || 'website visitor'}`;
+    const bodyLines = [
+      'a new appointment request was submitted from the schedule appointment page.',
+      '',
+      `name: ${formData.name || '(not provided)'}`,
+      `email: ${formData.email || '(not provided)'}`,
+      `phone: ${formData.phone || '(not provided)'}`,
+      `preferred date: ${formData.preferredDate || '(not specified)'}`,
+      `preferred time: ${formData.preferredTime || '(not specified)'}`,
+      '',
+      'additional information:',
+      formData.message || '(no additional information provided)',
+    ];
+
+    const params = new URLSearchParams({
+      subject,
+      body: bodyLines.join('\n'),
+    });
+
+    const mailtoHref = `mailto:${to}?${params.toString()}`;
+
+    try {
+      window.location.href = mailtoHref;
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          preferredDate: '',
+          preferredTime: '',
+          message: '',
+        });
+      }, 3000);
+    } catch (error) {
+      console.error('schedule page submission error:', error);
+    }
   };
 
   const handleChange = (
