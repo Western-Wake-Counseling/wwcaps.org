@@ -162,6 +162,9 @@ export default function FormsPage() {
                 <button type="submit" className={styles.submitButton}>
                   Submit Form
                 </button>
+                <p className={styles.note}>
+                  information submitted through this form is sent via encrypted google business email and handled in line with applicable privacy laws; do not use this form for emergencies.
+                </p>
               </form>
             )}
           </div>

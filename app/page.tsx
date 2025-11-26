@@ -232,6 +232,9 @@ export default function Home() {
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
+                <p className={styles.phoneNote}>
+                  information submitted through this form is sent via encrypted google business email and handled in line with applicable privacy laws; do not use this form for emergencies.
+                </p>
               </form>
             </div>
           </motion.div>
