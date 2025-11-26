@@ -137,6 +137,7 @@
 
   &:hover {
     color: var(--color-primary);
+    text-decoration: none;
 
     &::after {
       transform: translateX(-50%) scaleX(1);
