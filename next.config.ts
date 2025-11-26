@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 // next.js 16 configuration for github pages static export
-// for github pages: if using custom domain, set to '' or '/'
-// if using github.io subdomain, set to '/your-repo-name'
-// example: if repo is 'username/wwcaps.org', set to '/wwcaps.org'
+// for github pages: if using custom domain (wwcaps.org), leave NEXT_PUBLIC_BASE_PATH empty
+// if using github.io subdomain, set NEXT_PUBLIC_BASE_PATH to '/your-repo-name' (e.g. '/wwcaps.org')
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 const nextConfig: NextConfig = {
@@ -13,6 +12,9 @@ const nextConfig: NextConfig = {
   // next.js 16: basePath for github pages subdirectory
   // this automatically handles all asset paths including images and fonts
   basePath: basePath,
+
+  // ensure static assets (including fonts) use the same base path when exported
+  ...(basePath && { assetPrefix: basePath }),
   
   // next.js 16: image optimization disabled for static export
   images: {
