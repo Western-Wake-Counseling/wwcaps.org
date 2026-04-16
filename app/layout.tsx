@@ -71,8 +71,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/sunflower.jpg",
-        width: 1200,
-        height: 630,
+        width: 1920,
+        height: 1282,
         alt: "Sunflower field representing hope and growth at Western Wake Counseling",
       },
     ],
@@ -123,6 +123,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="preload"
+          href={`${basePath}/images/sunflower.webp`}
+          as="image"
+          type="image/webp"
+        />
+      </head>
       <body
         className={`${lora.variable} ${lato.variable} ${merriweather.variable}`}
       >

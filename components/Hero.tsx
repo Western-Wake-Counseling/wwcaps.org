@@ -5,15 +5,23 @@ import styles from './Hero.module.scss';
 
 export default function Hero() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-  const backgroundImageUrl = `${basePath}/images/sunflower.jpg`;
-  
+  const webpSrc = `${basePath}/images/sunflower.webp`;
+  const jpegSrc = `${basePath}/images/sunflower.jpg`;
+
   return (
     <section className={styles.hero}>
-      <div 
-        className={styles.backgroundImage} 
-        aria-hidden="true"
-        style={{ backgroundImage: `url('${backgroundImageUrl}')` }}
-      />
+      <div className={styles.backgroundImage} aria-hidden="true">
+        <picture>
+          <source srcSet={webpSrc} type="image/webp" />
+          <img
+            src={jpegSrc}
+            alt=""
+            className={styles.heroPhoto}
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+      </div>
       <div className={styles.content}>
         <div className={styles.textContent}>
           <h1 className={styles.heading}>
