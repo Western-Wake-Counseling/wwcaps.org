@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { buildMailtoHref } from '@/lib/mailto';
 import Hero from '@/components/Hero';
 import { FormField } from '@/components/FormField';
 import { ToastProvider, ToastNotification } from '@/components/ToastProvider';
@@ -106,12 +107,7 @@ export default function Home() {
       `message: ${data.message || '(no message provided)'}`,
     ];
 
-    const params = new URLSearchParams({
-      subject,
-      body: bodyLines.join('\n'),
-    });
-
-    const mailtoHref = `mailto:${to}?${params.toString()}`;
+    const mailtoHref = buildMailtoHref(to, subject, bodyLines.join('\n'));
 
     try {
       window.location.href = mailtoHref;

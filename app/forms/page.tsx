@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { buildMailtoHref } from '@/lib/mailto';
 import styles from './page.module.scss';
 
 export default function FormsPage() {
@@ -32,12 +33,7 @@ export default function FormsPage() {
       formData.message || '(no message provided)',
     ];
 
-    const params = new URLSearchParams({
-      subject,
-      body: bodyLines.join('\n'),
-    });
-
-    const mailtoHref = `mailto:${to}?${params.toString()}`;
+    const mailtoHref = buildMailtoHref(to, subject, bodyLines.join('\n'));
 
     try {
       window.location.href = mailtoHref;
